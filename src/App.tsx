@@ -344,7 +344,7 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
     'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?fm=jpg&fit=crop&q=80&w=800',
     'https://images.unsplash.com/photo-1516280440614-37939bbacd81?fm=jpg&fit=crop&q=80&w=800',
     'https://images.unsplash.com/photo-1520242739010-44e95bde329e?fm=jpg&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1472653423606-70327fd39d78?fm=jpg&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?fm=jpg&fit=crop&q=80&w=800',
   ];
 
   return (
