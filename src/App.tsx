@@ -153,9 +153,10 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2000"
+          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=1600"
           alt="Stage Background"
           className="w-full h-full object-cover opacity-40 grayscale"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#050505]" />
       </div>
@@ -227,9 +228,10 @@ const About = () => {
         >
           <div className="aspect-[3/4] overflow-hidden rounded-sm border border-white/5">
             <img 
-              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1000"
+              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?fm=jpg&fit=crop&q=80&w=800"
               alt="MC Portrait"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              className="w-full h-full object-cover transition-all duration-700"
+              loading="lazy"
             />
           </div>
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-900/20 backdrop-blur-xl border border-gold-500/20 p-6 hidden lg:block">
@@ -272,19 +274,19 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
       title: 'Свадебные Торжества',
       description: 'Элегантные свадьбы with акцентом на семейные ценности и современный стиль.',
       icon: <Star className="w-6 h-6" />,
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800'
+      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?fm=jpg&fit=crop&q=80&w=800'
     },
     {
       title: 'Корпоративные События',
       description: 'Масштабные ивенты, подчеркивающие статус компании и объединяющие команду.',
       icon: <Users className="w-6 h-6" />,
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800'
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?fm=jpg&fit=crop&q=80&w=800'
     },
     {
       title: 'Частные Приемы',
       description: 'Камерные дни рождения и юбилеи в кругу самых близких с безупречным сервисом.',
       icon: <Calendar className="w-6 h-6" />,
-      image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800'
+      image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?fm=jpg&fit=crop&q=80&w=800'
     }
   ];
 
@@ -310,7 +312,8 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
                 <img 
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  className="w-full h-full object-cover md:grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  loading="lazy"
                 />
               </div>
               <div className="p-8">
@@ -336,12 +339,12 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
 
 const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
   const images = [
-    'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1520242739010-44e95bde329e?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1472653423606-70327fd39d78?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?fm=jpg&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?fm=jpg&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?fm=jpg&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1516280440614-37939bbacd81?fm=jpg&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1520242739010-44e95bde329e?fm=jpg&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1472653423606-70327fd39d78?fm=jpg&fit=crop&q=80&w=800',
   ];
 
   return (
@@ -374,7 +377,8 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
               <img 
                 src={img}
                 alt={`Portfolio ${i}`}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                className="w-full h-full object-cover md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                loading="lazy"
               />
             </motion.div>
           ))}
