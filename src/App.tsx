@@ -161,7 +161,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#050505]" />
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl">
+      <div className="relative z-10 text-center px-4 max-w-4xl pt-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
