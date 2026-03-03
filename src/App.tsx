@@ -153,10 +153,9 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2000" 
-          alt="Stage Background" 
+          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=2000"
+          alt="Stage Background"
           className="w-full h-full object-cover opacity-40 grayscale"
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#050505]" />
       </div>
@@ -228,10 +227,9 @@ const About = () => {
         >
           <div className="aspect-[3/4] overflow-hidden rounded-sm border border-white/5">
             <img 
-              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1000" 
-              alt="MC Portrait" 
+              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1000"
+              alt="MC Portrait"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              referrerPolicy="no-referrer"
             />
           </div>
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-900/20 backdrop-blur-xl border border-gold-500/20 p-6 hidden lg:block">
@@ -310,10 +308,9 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
             >
               <div className="aspect-video overflow-hidden">
                 <img 
-                  src={service.image} 
-                  alt={service.title} 
+                  src={service.image}
+                  alt={service.title}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
-                  referrerPolicy="no-referrer"
                 />
               </div>
               <div className="p-8">
@@ -375,10 +372,9 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
               onClick={() => onAction("Просмотр фото...")}
             >
               <img 
-                src={img} 
-                alt={`Portfolio ${i}`} 
+                src={img}
+                alt={`Portfolio ${i}`}
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                referrerPolicy="no-referrer"
               />
             </motion.div>
           ))}
