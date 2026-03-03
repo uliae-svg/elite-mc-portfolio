@@ -149,7 +149,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
 const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0">
+    <section className="relative h-screen flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-0">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
