@@ -109,8 +109,8 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
       {/* Mobile Menu — CSS max-height transition, no JS animation */}
       <div
-        className="md:hidden bg-black/95 border-b border-white/10 overflow-hidden transition-[max-height,opacity] duration-300"
-        style={{ maxHeight: isMobileMenuOpen ? '400px' : '0', opacity: isMobileMenuOpen ? 1 : 0 }}
+        className="md:hidden bg-black/95 border-b border-white/10 overflow-hidden"
+        style={{ maxHeight: isMobileMenuOpen ? '400px' : '0', opacity: isMobileMenuOpen ? 1 : 0, transition: 'opacity 0.25s' }}
       >
         <div className="flex flex-col p-8 space-y-6">
           {navLinks.map((link) => (
@@ -194,7 +194,7 @@ const About = () => {
             <img 
               src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?fm=jpg&fit=crop&q=80&w=800"
               alt="MC Portrait"
-              className="w-full h-full object-cover transition-all duration-700"
+              className="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
@@ -268,7 +268,7 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
                 <img 
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover md:grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110 md:transition-[filter,transform] md:duration-700"
                   loading="lazy"
                 />
               </div>
@@ -323,7 +323,7 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
               <img
                 src={img}
                 alt={`Portfolio ${i}`}
-                className="w-full h-full object-cover md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-105 md:transition-[filter,transform] md:duration-700"
                 loading="lazy"
               />
             </div>
