@@ -131,7 +131,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
 
       <div className="relative z-10 text-center px-4 max-w-4xl">
         <div className="anim-fade-up">
-          <span className="text-gold-500 uppercase tracking-[0.4em] text-sm mb-6 block font-medium">
+          <span className="text-gold-500 uppercase tracking-[0.4em] text-sm mb-6 mt-8 md:mt-0 block font-medium">
             Мастер исключительных событий
           </span>
           <h1 className="text-6xl md:text-8xl font-serif font-light mb-8 leading-tight">
