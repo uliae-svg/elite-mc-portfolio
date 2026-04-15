@@ -144,7 +144,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-10 py-4 border border-white/20 hover:border-gold-500/50 text-white uppercase tracking-widest transition-all"
+              className="px-10 py-4 border border-white/20 hover:border-gold-500/50 text-white uppercase tracking-widest transition-colors duration-300"
             >
               Обсудить дату
             </button>
@@ -184,7 +184,7 @@ const About = () => {
           decoding="async"
             />
           </div>
-          <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-900/20 backdrop-blur-xl border border-gold-500/20 p-6 hidden lg:block">
+          <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-950/80 border border-gold-500/20 p-6 hidden lg:block">
             <p className="font-serif italic text-gold-400 text-lg">"Каждое событие — это история, которую мы пишем вместе."</p>
           </div>
         </div>
@@ -402,7 +402,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
 
           <div className="space-y-8">
             <div className="flex items-center gap-6 cursor-pointer group" onClick={() => onAction("Набираем номер...")}>
-              <div className="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-black transition-all">
+              <div className="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-black transition-colors duration-300">
                 <Phone size={20} />
               </div>
               <div>
@@ -411,7 +411,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
               </div>
             </div>
             <div className="flex items-center gap-6 cursor-pointer group" onClick={() => onAction("Открываем почту...")}>
-              <div className="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-black transition-all">
+              <div className="w-12 h-12 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-500 group-hover:bg-gold-500 group-hover:text-black transition-colors duration-300">
                 <Mail size={20} />
               </div>
               <div>
@@ -422,10 +422,10 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
           </div>
 
           <div className="flex gap-6 mt-12">
-            <a href="#" onClick={(e) => { e.preventDefault(); onAction("Переход в Instagram..."); }} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold-500 hover:text-gold-500 transition-all">
+            <a href="#" onClick={(e) => { e.preventDefault(); onAction("Переход в Instagram..."); }} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold-500 hover:text-gold-500 transition-colors duration-300">
               <Instagram size={18} />
             </a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onAction("Переход в Facebook..."); }} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold-500 hover:text-gold-500 transition-all">
+            <a href="#" onClick={(e) => { e.preventDefault(); onAction("Переход в Facebook..."); }} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-gold-500 hover:text-gold-500 transition-colors duration-300">
               <Facebook size={18} />
             </a>
           </div>
@@ -476,7 +476,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
             </div>
             <button 
               disabled={isSubmitting}
-              className="w-full py-4 bg-gold-600 text-black font-medium uppercase tracking-widest hover:bg-gold-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 bg-gold-600 text-black font-medium uppercase tracking-widest hover:bg-gold-400 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Отправка..." : "Отправить запрос"}
             </button>
