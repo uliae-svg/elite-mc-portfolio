@@ -220,12 +220,7 @@ const About = () => {
   return (
     <section id="about" className="py-24 px-6 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="relative"
-        >
+        <div className="relative">
           <div className="aspect-[3/4] overflow-hidden rounded-sm border border-white/5">
             <img 
               src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?fm=jpg&fit=crop&q=80&w=800"
@@ -237,13 +232,9 @@ const About = () => {
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-900/20 backdrop-blur-xl border border-gold-500/20 p-6 hidden lg:block">
             <p className="font-serif italic text-gold-400 text-lg">"Каждое событие — это история, которую мы пишем вместе."</p>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-        >
+        <div>
           <h2 className="text-4xl font-serif mb-8">Философия Ведения</h2>
           <div className="space-y-6 text-white/70 leading-relaxed font-light">
             <p>
@@ -262,7 +253,7 @@ const About = () => {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -300,12 +291,8 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service) => (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.4 }}
               className="group relative overflow-hidden bg-[#111] border border-white/5"
             >
               <div className="aspect-video overflow-hidden">
@@ -329,7 +316,7 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
                   Подробнее <ChevronRight size={14} />
                 </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -359,22 +346,18 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((img, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.4 }}
               className="aspect-square overflow-hidden group cursor-pointer"
               onClick={() => onAction("Просмотр фото...")}
             >
-              <img 
+              <img
                 src={img}
                 alt={`Portfolio ${i}`}
                 className="w-full h-full object-cover md:grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                 loading="lazy"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -411,12 +394,8 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-3 gap-12">
           {reviews.map((review) => (
-            <motion.div
+            <div
               key={review.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.4 }}
               className="relative p-8 bg-white/5 border border-white/5 rounded-sm"
             >
               <Quote className="absolute top-6 right-6 w-8 h-8 text-gold-500/20" />
@@ -427,7 +406,7 @@ const Testimonials = () => {
                 <div className="font-serif text-gold-400">{review.name}</div>
                 <div className="text-[10px] uppercase tracking-widest text-white/30 mt-1">{review.role}</div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -495,12 +474,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="bg-white/5 p-10 border border-white/10 rounded-sm"
-        >
+        <div className="bg-white/5 p-10 border border-white/10 rounded-sm">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -550,7 +524,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
               {isSubmitting ? "Отправка..." : "Отправить запрос"}
             </button>
           </form>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
