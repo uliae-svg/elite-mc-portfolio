@@ -6,18 +6,21 @@ import {
 } from 'lucide-react';
 
 // Global Toast Component
-const Toast = ({ message, isVisible, onClose }: { message: string, isVisible: boolean, onClose: () => void }) => (
-  <div
-    className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] bg-gold-600 text-black px-8 py-4 rounded-sm shadow-2xl flex items-center gap-3 min-w-[300px] transition-[opacity,transform] duration-300"
-    style={{ opacity: isVisible ? 1 : 0, transform: `translateX(-50%) translateY(${isVisible ? '0' : '20px'})`, pointerEvents: isVisible ? 'auto' : 'none' }}
-  >
-    <CheckCircle2 size={20} />
-    <span className="text-sm font-medium uppercase tracking-widest">{message}</span>
-    <button onClick={onClose} className="ml-auto hover:opacity-50">
-      <X size={16} />
-    </button>
-  </div>
-);
+const Toast = ({ message, isVisible, onClose }: { message: string, isVisible: boolean, onClose: () => void }) => {
+  if (!isVisible) return null;
+  return (
+    <div
+      className="fixed bottom-10 z-[100] bg-gold-600 text-black px-8 py-4 rounded-sm shadow-2xl flex items-center gap-3 min-w-[300px]"
+      style={{ left: '50%', transform: 'translateX(-50%)' }}
+    >
+      <CheckCircle2 size={20} />
+      <span className="text-sm font-medium uppercase tracking-widest">{message}</span>
+      <button onClick={onClose} className="ml-auto hover:opacity-50">
+        <X size={16} />
+      </button>
+    </div>
+  );
+};
 
 const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -152,7 +155,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
 
       {/* Scroll Indicator */}
       <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer scroll-indicator"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2 cursor-pointer scroll-indicator hidden md:flex"
         onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
       >
         <div className="w-[1px] h-12 bg-gradient-to-b from-gold-500 to-transparent" />
