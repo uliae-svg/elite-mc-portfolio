@@ -88,7 +88,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
       {/* Mobile Menu — CSS max-height transition, no JS animation */}
       <div
-        className="md:hidden bg-black/95 border-b border-white/10 overflow-hidden"
+        className="md:hidden bg-black border-b border-white/10 overflow-hidden"
         style={{ maxHeight: isMobileMenuOpen ? '400px' : '0', opacity: isMobileMenuOpen ? 1 : 0, transition: 'opacity 0.25s' }}
       >
         <div className="flex flex-col p-8 space-y-6">
@@ -114,7 +114,9 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=1600"
+          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=800"
+          srcSet="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=800 800w, https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=1600 1600w"
+          sizes="100vw"
           alt="Stage Background"
           className="w-full h-full object-cover"
           loading="eager"
