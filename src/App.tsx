@@ -61,7 +61,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
+      className="sticky top-0 z-50 px-6 py-4"
     >
       {/* Фоновый слой — только opacity transition (compositor-only, без repaint) */}
       <div
@@ -131,7 +131,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
 const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
   return (
-    <section className="relative h-svh flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-0">
+    <section className="relative flex items-center justify-center overflow-hidden" style={{ height: 'calc(100svh - 72px)' }}>
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
