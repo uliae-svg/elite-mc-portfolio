@@ -18,8 +18,14 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-[#050505] text-white antialiased selection:bg-gold-500/30;
+  }
+  section[id] {
+    scroll-margin-top: 72px;
   }
 }
 

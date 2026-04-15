@@ -34,11 +34,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     setTimeout(() => {
-      const target = document.querySelector(href) as HTMLElement | null;
-      if (target) {
-        const offset = target.getBoundingClientRect().top + window.scrollY - 72;
-        window.scrollTo({ top: offset, behavior: 'smooth' });
-      }
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     }, 350);
   };
 
