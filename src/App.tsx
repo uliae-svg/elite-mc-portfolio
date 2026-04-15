@@ -164,7 +164,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
 const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
   return (
-    <section className="relative h-screen flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-0">
+    <section className="relative h-svh flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-0">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -560,7 +560,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen font-sans scroll-smooth">
+    <div className="min-h-svh font-sans">
       <Navbar onAction={showToast} />
       <Hero onAction={showToast} />
       <About />
