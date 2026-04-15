@@ -48,7 +48,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
     >
       {/* Фоновый слой — только opacity transition (compositor-only, без repaint) */}
       <div
-        className="nav-bg absolute inset-0 bg-black/95 border-b border-white/5 pointer-events-none"
+        className="nav-bg absolute inset-0 bg-black border-b border-white/10 pointer-events-none"
         aria-hidden="true"
       />
       <div className="max-w-7xl mx-auto flex justify-between items-center relative z-10">
@@ -114,7 +114,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
 const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden" style={{ height: '100svh' }}>
+    <section className="relative flex items-center justify-center" style={{ height: '100svh' }}>
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -353,7 +353,7 @@ const Testimonials = () => {
           {reviews.map((review) => (
             <div
               key={review.name}
-              className="relative p-8 bg-white/5 border border-white/5 rounded-sm"
+              className="relative p-8 bg-[#111] border border-white/5 rounded-sm"
             >
               <Quote className="absolute top-6 right-6 w-8 h-8 text-gold-500/20" />
               <p className="text-white/70 italic mb-8 font-light leading-relaxed">
