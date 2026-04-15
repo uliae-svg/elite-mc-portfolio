@@ -91,7 +91,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
       {/* Mobile Menu — CSS max-height transition, no JS animation */}
       <div
-        className="md:hidden bg-black border-b border-white/10"
+        className="md:hidden bg-black border-b border-white/10 relative z-10"
         style={{ display: isMobileMenuOpen ? 'block' : 'none' }}
       >
         <div className="flex flex-col p-8 space-y-6">
