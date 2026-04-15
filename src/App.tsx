@@ -79,8 +79,8 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,padding] duration-500 px-6 py-4 transform-gpu",
-      isScrolled ? "bg-black/95 md:bg-black/80 md:backdrop-blur-md border-b border-white/5 py-3" : "bg-transparent"
+      "fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,opacity] duration-300 px-6 py-4 transform-gpu",
+      isScrolled ? "bg-black/95 md:bg-black/80 md:backdrop-blur-md border-b border-white/5" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <motion.div 
