@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import {
-  Star, Calendar, Users, ChevronRight,
+  Star, Calendar, Users,
   Instagram, Facebook, Mail, Phone,
   Menu, X, Quote, CheckCircle2
 } from 'lucide-react';
@@ -226,7 +226,7 @@ const About = () => {
   );
 };
 
-const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
+const Services = () => {
   const services = [
     {
       title: 'Свадебные Торжества',
@@ -281,12 +281,6 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
                 <p className="text-white/50 text-sm leading-relaxed font-light">
                   {service.description}
                 </p>
-                <button 
-                  onClick={() => onAction("Детали услуги отправлены в мессенджер")}
-                  className="mt-6 flex items-center gap-2 text-xs uppercase tracking-widest text-gold-500 hover:text-white transition-colors"
-                >
-                  Подробнее <ChevronRight size={14} />
-                </button>
               </div>
             </motion.div>
           ))}
@@ -535,7 +529,7 @@ export default function App() {
       <Navbar onAction={showToast} />
       <Hero onAction={showToast} />
       <About />
-      <Services onAction={showToast} />
+      <Services />
       <Portfolio onAction={showToast} />
       <Testimonials />
       <Contact onAction={showToast} />
