@@ -154,7 +154,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
         <img 
           src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=1600"
           alt="Stage Background"
-          className="w-full h-full object-cover opacity-40 grayscale"
+          className="w-full h-full object-cover opacity-40 md:grayscale"
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#050505]" />
