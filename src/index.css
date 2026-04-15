@@ -29,3 +29,8 @@
 .text-balance {
   text-wrap: balance;
 }
+
+section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}

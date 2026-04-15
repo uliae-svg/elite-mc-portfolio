@@ -48,9 +48,13 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    let rafId: number;
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => setIsScrolled(window.scrollY > 50));
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => { window.removeEventListener('scroll', handleScroll); cancelAnimationFrame(rafId); };
   }, []);
 
   const navLinks = [
@@ -295,13 +299,13 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, i) => (
+          {services.map((service) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4 }}
               className="group relative overflow-hidden bg-[#111] border border-white/5"
             >
               <div className="aspect-video overflow-hidden">
@@ -359,8 +363,8 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
               key={i}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4 }}
               className="aspect-square overflow-hidden group cursor-pointer"
               onClick={() => onAction("Просмотр фото...")}
             >
@@ -406,13 +410,13 @@ const Testimonials = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-12">
-          {reviews.map((review, i) => (
+          {reviews.map((review) => (
             <motion.div
               key={review.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4 }}
               className="relative p-8 bg-white/5 border border-white/5 rounded-sm"
             >
               <Quote className="absolute top-6 right-6 w-8 h-8 text-gold-500/20" />
