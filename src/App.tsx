@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import {
   Star, Calendar, Users, ChevronRight,
   Instagram, Facebook, Mail, Phone,
@@ -174,7 +175,13 @@ const About = () => {
   return (
     <section id="about" className="py-24 px-6 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <div className="relative">
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="aspect-[3/4] overflow-hidden rounded-sm border border-white/5">
             <img 
               src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?fm=jpg&fit=crop&q=80&w=800"
@@ -187,9 +194,14 @@ const About = () => {
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-950/80 border border-gold-500/20 p-6 hidden lg:block">
             <p className="font-serif italic text-gold-400 text-lg">"Каждое событие — это история, которую мы пишем вместе."</p>
           </div>
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-4xl font-serif mb-8">Философия Ведения</h2>
           <div className="space-y-6 text-white/70 leading-relaxed font-light">
             <p>
@@ -208,7 +220,7 @@ const About = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -245,9 +257,13 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <div
+          {services.map((service, i) => (
+            <motion.div
               key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
               className="group relative overflow-hidden bg-[#111] border border-white/5"
             >
               <div className="aspect-video overflow-hidden">
@@ -272,7 +288,7 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
                   Подробнее <ChevronRight size={14} />
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -302,8 +318,12 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((img, i) => (
-            <div
+            <motion.div
               key={i}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
               className="aspect-square overflow-hidden group cursor-pointer"
               onClick={() => onAction("Просмотр фото...")}
             >
@@ -314,7 +334,7 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
                 loading="lazy"
           decoding="async"
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -350,9 +370,13 @@ const Testimonials = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-12">
-          {reviews.map((review) => (
-            <div
+          {reviews.map((review, i) => (
+            <motion.div
               key={review.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
               className="relative p-8 bg-[#111] border border-white/5 rounded-sm"
             >
               <Quote className="absolute top-6 right-6 w-8 h-8 text-gold-500/20" />
@@ -363,7 +387,7 @@ const Testimonials = () => {
                 <div className="font-serif text-gold-400">{review.name}</div>
                 <div className="text-[10px] uppercase tracking-widest text-white/30 mt-1">{review.role}</div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
