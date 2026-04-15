@@ -45,20 +45,16 @@ const Toast = ({ message, isVisible, onClose }: { message: string, isVisible: bo
 
 const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
+    const bg = bgRef.current;
+    if (!bg) return;
     let rafId: number;
     const handleScroll = () => {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        if (window.scrollY > 50) {
-          nav.classList.add('nav-scrolled');
-        } else {
-          nav.classList.remove('nav-scrolled');
-        }
+        bg.style.opacity = window.scrollY > 50 ? '1' : '0';
       });
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -87,10 +83,16 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
   return (
     <nav
-      ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4 transform-gpu transition-[background-color,border-color] duration-300"
+      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      {/* Фоновый слой — только opacity transition (compositor-only, без repaint) */}
+      <div
+        ref={bgRef}
+        className="absolute inset-0 bg-black/95 border-b border-white/5 pointer-events-none"
+        style={{ opacity: 0, transition: 'opacity 0.3s' }}
+        aria-hidden="true"
+      />
+      <div className="max-w-7xl mx-auto flex justify-between items-center relative z-10">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
