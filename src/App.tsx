@@ -114,12 +114,11 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
   return (
     <section className="relative flex items-center justify-center" style={{ height: 'calc(100svh - 72px)' }}>
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=800"
-          srcSet="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=800 800w, https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=1600 1600w"
-          sizes="100vw"
+      {/* Mobile: pure CSS, no image. Desktop: photo + overlay */}
+      <div className="absolute inset-0 z-0 md:hidden" style={{ background: 'linear-gradient(160deg, #0a0a0a 0%, #050505 100%)' }} />
+      <div className="absolute inset-0 z-0 hidden md:block">
+        <img
+          src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fm=jpg&fit=crop&q=80&w=1600"
           alt="Stage Background"
           className="w-full h-full object-cover"
           loading="eager"

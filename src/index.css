@@ -22,9 +22,11 @@
     @apply bg-[#050505] text-white antialiased selection:bg-gold-500/30;
     touch-action: pan-y;
   }
-  nav {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
+  @media (min-width: 768px) {
+    nav {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
   }
   section[id] {
     scroll-margin-top: 72px;
