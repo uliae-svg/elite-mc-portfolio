@@ -75,8 +75,8 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4",
-      isScrolled ? "bg-black/80 backdrop-blur-md border-b border-white/5 py-3" : "bg-transparent"
+      "fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,padding] duration-500 px-6 py-4 transform-gpu",
+      isScrolled ? "bg-black/95 md:bg-black/80 md:backdrop-blur-md border-b border-white/5 py-3" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <motion.div 
@@ -363,8 +363,8 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
           {images.map((img, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="aspect-square overflow-hidden group cursor-pointer"
@@ -501,7 +501,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="bg-white/5 backdrop-blur-sm p-10 border border-white/10 rounded-sm"
+          className="bg-white/5 p-10 border border-white/10 rounded-sm"
         >
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-6">
