@@ -18,9 +18,18 @@
 }
 
 @layer base {
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
   body {
     @apply bg-[#050505] text-white antialiased selection:bg-gold-500/30;
-    touch-action: pan-y;
+  }
+  #root {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
   @media (min-width: 768px) {
     nav {

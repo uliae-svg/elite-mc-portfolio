@@ -53,7 +53,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
       <div className="max-w-7xl mx-auto flex justify-between items-center relative z-10">
         <div
           className="anim-fade-left text-2xl font-serif font-bold tracking-widest text-gold-400 cursor-pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => document.getElementById('root')?.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           ALEXANDER <span className="text-white font-light">VOLKOV</span>
         </div>
