@@ -1,26 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Mic2, 
-  Star, 
-  Calendar, 
-  Users, 
-  Award, 
-  ChevronRight, 
-  Instagram, 
-  Facebook, 
-  Mail, 
-  Phone,
-  Menu,
-  X,
-  Quote,
-  CheckCircle2
+import {
+  Star, Calendar, Users, ChevronRight,
+  Instagram, Facebook, Mail, Phone,
+  Menu, X, Quote, CheckCircle2
 } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 // Global Toast Component
 const Toast = ({ message, isVisible, onClose }: { message: string, isVisible: boolean, onClose: () => void }) => (
@@ -139,6 +122,8 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
           alt="Stage Background"
           className="w-full h-full object-cover opacity-40 md:grayscale"
           loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#050505]" />
       </div>
@@ -196,6 +181,7 @@ const About = () => {
               alt="MC Portrait"
               className="w-full h-full object-cover"
               loading="lazy"
+          decoding="async"
             />
           </div>
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-900/20 backdrop-blur-xl border border-gold-500/20 p-6 hidden lg:block">
@@ -270,6 +256,7 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
                   alt={service.title}
                   className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110 md:transition-[filter,transform] md:duration-700"
                   loading="lazy"
+          decoding="async"
                 />
               </div>
               <div className="p-8">
@@ -325,6 +312,7 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
                 alt={`Portfolio ${i}`}
                 className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-105 md:transition-[filter,transform] md:duration-700"
                 loading="lazy"
+          decoding="async"
               />
             </div>
           ))}
