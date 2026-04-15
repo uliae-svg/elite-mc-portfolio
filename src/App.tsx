@@ -351,12 +351,6 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
             <h2 className="text-4xl font-serif mb-4">Мгновения</h2>
             <p className="text-white/50 font-light">Эстетика и энергия реальных событий</p>
           </div>
-          <button 
-            onClick={() => onAction("Загрузка полного портфолио...")}
-            className="text-xs uppercase tracking-widest border-b border-gold-500 pb-2 text-gold-400 hover:text-white transition-colors"
-          >
-            Смотреть все работы
-          </button>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
