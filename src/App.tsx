@@ -44,14 +44,22 @@ const Toast = ({ message, isVisible, onClose }: { message: string, isVisible: bo
 );
 
 const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
     let rafId: number;
     const handleScroll = () => {
       cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => setIsScrolled(window.scrollY > 50));
+      rafId = requestAnimationFrame(() => {
+        if (window.scrollY > 50) {
+          nav.classList.add('nav-scrolled');
+        } else {
+          nav.classList.remove('nav-scrolled');
+        }
+      });
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => { window.removeEventListener('scroll', handleScroll); cancelAnimationFrame(rafId); };
@@ -78,10 +86,10 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
   };
 
   return (
-    <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,opacity] duration-300 px-6 py-4 transform-gpu",
-      isScrolled ? "bg-black/95 md:bg-black/80 md:backdrop-blur-md border-b border-white/5" : "bg-transparent"
-    )}>
+    <nav
+      ref={navRef}
+      className="fixed top-0 left-0 right-0 z-50 px-6 py-4 transform-gpu transition-[background-color,border-color] duration-300"
+    >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -197,14 +205,12 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer scroll-indicator"
         onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
       >
         <div className="w-[1px] h-12 bg-gradient-to-b from-gold-500 to-transparent" />
-      </motion.div>
+      </div>
     </section>
   );
 };
