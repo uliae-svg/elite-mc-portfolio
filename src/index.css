@@ -28,6 +28,26 @@
   text-wrap: balance;
 }
 
+/* Navbar background: всегда видим как fallback */
+.nav-bg {
+  opacity: 1;
+}
+
+/* Scroll-driven animation — 100% compositor, zero JS.
+   iOS Safari 17+ / Chrome 115+ / Firefox 110+ */
+@supports (animation-timeline: scroll()) {
+  @keyframes nav-bg-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .nav-bg {
+    animation: nav-bg-fade linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0px 80px;
+  }
+}
+
 
 @keyframes scroll-bounce {
   0%, 100% { transform: translateY(0); }

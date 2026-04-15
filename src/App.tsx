@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { 
   Mic2, 
   Star, 
@@ -38,21 +38,6 @@ const Toast = ({ message, isVisible, onClose }: { message: string, isVisible: bo
 
 const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const bgRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const bg = bgRef.current;
-    if (!bg) return;
-    let rafId: number;
-    const handleScroll = () => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        bg.style.opacity = window.scrollY > 50 ? '1' : '0';
-      });
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => { window.removeEventListener('scroll', handleScroll); cancelAnimationFrame(rafId); };
-  }, []);
 
   const navLinks = [
     { name: 'Обо мне', href: '#about' },
@@ -80,9 +65,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
     >
       {/* Фоновый слой — только opacity transition (compositor-only, без repaint) */}
       <div
-        ref={bgRef}
-        className="absolute inset-0 bg-black/95 border-b border-white/5 pointer-events-none"
-        style={{ opacity: 0, transition: 'opacity 0.3s' }}
+        className="nav-bg absolute inset-0 bg-black/95 border-b border-white/5 pointer-events-none"
         aria-hidden="true"
       />
       <div className="max-w-7xl mx-auto flex justify-between items-center relative z-10">
