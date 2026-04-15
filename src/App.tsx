@@ -89,7 +89,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
       {/* Mobile Menu — CSS max-height transition, no JS animation */}
       <div
         className="md:hidden bg-black border-b border-white/10 overflow-hidden"
-        style={{ maxHeight: isMobileMenuOpen ? '400px' : '0', opacity: isMobileMenuOpen ? 1 : 0, transition: 'opacity 0.25s' }}
+        style={{ display: isMobileMenuOpen ? 'block' : 'none' }}
       >
         <div className="flex flex-col p-8 space-y-6">
           {navLinks.map((link) => (

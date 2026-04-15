@@ -28,8 +28,6 @@
   }
   section[id] {
     scroll-margin-top: 72px;
-    content-visibility: auto;
-    contain-intrinsic-size: auto 700px;
   }
 }
 
