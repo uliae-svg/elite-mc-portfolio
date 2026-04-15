@@ -270,7 +270,7 @@ const Services = ({ onAction }: { onAction: (msg: string) => void }) => {
                 <img 
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-[filter,transform] duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 [transition:filter_0.7s_ease,transform_0.7s_ease]"
                   loading="lazy"
           decoding="async"
                 />
@@ -330,7 +330,7 @@ const Portfolio = ({ onAction }: { onAction: (msg: string) => void }) => {
               <img
                 src={img}
                 alt={`Portfolio ${i}`}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-[filter,transform] duration-700"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 [transition:filter_0.7s_ease,transform_0.7s_ease]"
                 loading="lazy"
           decoding="async"
               />
