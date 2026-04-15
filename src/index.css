@@ -21,6 +21,8 @@
 @layer base {
   body {
     @apply bg-[#050505] text-white antialiased selection:bg-gold-500/30;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
   }
 }
 
