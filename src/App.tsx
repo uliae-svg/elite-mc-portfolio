@@ -63,11 +63,14 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+    setIsMobileMenuOpen(false);
+    setTimeout(() => {
+      const target = document.querySelector(href) as HTMLElement | null;
+      if (target) {
+        const offset = target.getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    }, 350);
   };
 
   return (
@@ -179,14 +182,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button 
-              onClick={() => onAction("Презентация загружается...")}
-              className="group relative px-10 py-4 bg-gold-600 text-black font-medium uppercase tracking-widest overflow-hidden transition-all"
-            >
-              <span className="relative z-10">Смотреть презентацию</span>
-              <div className="absolute inset-0 bg-gold-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </button>
-            <button 
+            <button
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-10 py-4 border border-white/20 hover:border-gold-500/50 text-white uppercase tracking-widest transition-all"
             >
