@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { 
   Mic2, 
   Star, 
@@ -25,22 +24,16 @@ function cn(...inputs: ClassValue[]) {
 
 // Global Toast Component
 const Toast = ({ message, isVisible, onClose }: { message: string, isVisible: boolean, onClose: () => void }) => (
-  <AnimatePresence>
-    {isVisible && (
-      <motion.div
-        initial={{ opacity: 0, y: 50, x: '-50%' }}
-        animate={{ opacity: 1, y: 0, x: '-50%' }}
-        exit={{ opacity: 0, y: 20, x: '-50%' }}
-        className="fixed bottom-10 left-1/2 z-[100] bg-gold-600 text-black px-8 py-4 rounded-sm shadow-2xl flex items-center gap-3 min-w-[300px]"
-      >
-        <CheckCircle2 size={20} />
-        <span className="text-sm font-medium uppercase tracking-widest">{message}</span>
-        <button onClick={onClose} className="ml-auto hover:opacity-50">
-          <X size={16} />
-        </button>
-      </motion.div>
-    )}
-  </AnimatePresence>
+  <div
+    className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] bg-gold-600 text-black px-8 py-4 rounded-sm shadow-2xl flex items-center gap-3 min-w-[300px] transition-[opacity,transform] duration-300"
+    style={{ opacity: isVisible ? 1 : 0, transform: `translateX(-50%) translateY(${isVisible ? '0' : '20px'})`, pointerEvents: isVisible ? 'auto' : 'none' }}
+  >
+    <CheckCircle2 size={20} />
+    <span className="text-sm font-medium uppercase tracking-widest">{message}</span>
+    <button onClick={onClose} className="ml-auto hover:opacity-50">
+      <X size={16} />
+    </button>
+  </div>
 );
 
 const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
@@ -93,42 +86,37 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
         aria-hidden="true"
       />
       <div className="max-w-7xl mx-auto flex justify-between items-center relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="text-2xl font-serif font-bold tracking-widest text-gold-400 cursor-pointer"
+        <div
+          className="anim-fade-left text-2xl font-serif font-bold tracking-widest text-gold-400 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           ALEXANDER <span className="text-white font-light">VOLKOV</span>
-        </motion.div>
+        </div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link, i) => (
-            <motion.a
+            <a
               key={link.name}
               href={link.href}
               onClick={(e) => handleScrollTo(e, link.href)}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="text-xs uppercase tracking-[0.2em] text-white/70 hover:text-gold-400 transition-colors"
+              className="anim-fade-down text-xs uppercase tracking-[0.2em] text-white/70 hover:text-gold-400 transition-colors"
+              style={{ animationDelay: `${i * 0.1}s` }}
             >
               {link.name}
-            </motion.a>
+            </a>
           ))}
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+          <button
             onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-6 py-2 border border-gold-500/50 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-500 hover:text-black transition-all duration-300"
+            className="anim-fade-down px-6 py-2 border border-gold-500/50 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-500 hover:text-black transition-colors duration-300"
+            style={{ animationDelay: '0.5s' }}
           >
             Забронировать
-          </motion.button>
+          </button>
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="md:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -136,30 +124,24 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/95 border-b border-white/10 overflow-hidden"
-          >
-            <div className="flex flex-col p-8 space-y-6">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => handleScrollTo(e, link.href)}
-                  className="text-lg font-serif text-white/80 hover:text-gold-400"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile Menu — CSS max-height transition, no JS animation */}
+      <div
+        className="md:hidden bg-black/95 border-b border-white/10 overflow-hidden transition-[max-height,opacity] duration-300"
+        style={{ maxHeight: isMobileMenuOpen ? '400px' : '0', opacity: isMobileMenuOpen ? 1 : 0 }}
+      >
+        <div className="flex flex-col p-8 space-y-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => handleScrollTo(e, link.href)}
+              className="text-lg font-serif text-white/80 hover:text-gold-400"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+      </div>
     </nav>
   );
 };
@@ -179,11 +161,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="anim-fade-up">
           <span className="text-gold-500 uppercase tracking-[0.4em] text-sm mb-6 block font-medium">
             Мастер исключительных событий
           </span>
@@ -203,7 +181,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
               Обсудить дату
             </button>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
