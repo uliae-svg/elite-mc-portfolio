@@ -117,17 +117,16 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
     <section className="relative flex items-center justify-center" style={{ height: 'calc(100svh - 72px)' }}>
       {/* Mobile: pure CSS, no image. Desktop: photo + overlay */}
       <div className="absolute inset-0 z-0 md:hidden" style={{ background: 'linear-gradient(160deg, #0a0a0a 0%, #050505 100%)' }} />
-      <div className="absolute inset-0 z-0 hidden md:block overflow-hidden">
+      <div className="absolute inset-0 z-0 hidden md:block">
         <img
-          src="https://images.unsplash.com/photo-1478147427282-58a87a5a02a2?fm=jpg&fit=crop&q=80&w=1600"
+          src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?fm=jpg&fit=crop&q=80&w=1600"
           alt="Stage Background"
-          className="w-full h-full object-cover scale-105"
-          style={{ filter: 'blur(2px)' }}
+          className="w-full h-full object-cover"
           loading="eager"
           decoding="async"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-[#050505]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-[#050505]" />
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-5xl">
