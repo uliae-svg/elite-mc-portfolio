@@ -119,7 +119,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
       <div className="absolute inset-0 z-0 md:hidden" style={{ background: 'linear-gradient(160deg, #0a0a0a 0%, #050505 100%)' }} />
       <div className="absolute inset-0 z-0 hidden md:block overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?fm=jpg&fit=crop&q=80&w=1600"
+          src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?fm=jpg&fit=crop&q=80&w=1600"
           alt="Stage Background"
           className="w-full h-full object-cover scale-105"
           style={{ filter: 'blur(4px)' }}
