@@ -130,20 +130,21 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#050505]" />
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl">
-        <div className="anim-fade-up">
+      <div className="relative z-10 w-full px-8 md:px-16 max-w-7xl">
+        <div className="anim-fade-up text-center md:text-left">
           <span className="text-gold-500 uppercase tracking-[0.4em] text-sm mb-6 mt-8 md:mt-0 block font-medium">
             Мастер исключительных событий
           </span>
-          <h1 className="text-6xl md:text-8xl font-serif font-light mb-8 leading-tight">
-            Искусство <br /> 
-            <span className="font-bold tracking-widest text-gold-400 uppercase">Вашего</span> Торжества
+          <h1 className="text-6xl md:text-[7rem] lg:text-[9rem] font-serif font-light mb-8 leading-[1] md:leading-[0.95]">
+            Искусство<br />
+            <span className="font-bold tracking-widest text-gold-400 uppercase">Вашего</span><br />
+            Торжества
           </h1>
-          <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+          <p className="text-white/60 text-lg md:text-xl max-w-2xl mb-12 font-light leading-relaxed">
             Создаю атмосферу статуса и комфорта для тех, кто ценит безупречный стиль и интеллектуальный юмор.
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+
+          <div className="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-6">
             <button
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-10 py-4 border border-white/20 hover:border-gold-500/50 text-white uppercase tracking-widest transition-colors duration-300"
