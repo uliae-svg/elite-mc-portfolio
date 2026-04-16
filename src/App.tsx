@@ -115,19 +115,15 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
 const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
   return (
     <section className="relative flex items-center justify-center" style={{ height: 'calc(100svh - 72px)' }}>
-      {/* Mobile: pure CSS, no image. Desktop: photo + overlay */}
-      <div className="absolute inset-0 z-0 md:hidden" style={{ background: 'linear-gradient(160deg, #0a0a0a 0%, #050505 100%)' }} />
-      <div className="absolute inset-0 z-0 hidden md:block">
-        <img
-          src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?fm=jpg&fit=crop&q=80&w=1600"
-          alt="Stage Background"
-          className="w-full h-full object-cover"
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-[#050505]" />
-      </div>
+      {/* Background: layered radial gradients — warm golden light on dark */}
+      <div className="absolute inset-0 z-0" style={{
+        background: `
+          radial-gradient(ellipse 80% 60% at 70% 20%, rgba(166,137,83,0.18) 0%, transparent 70%),
+          radial-gradient(ellipse 60% 50% at 20% 80%, rgba(166,137,83,0.10) 0%, transparent 60%),
+          radial-gradient(ellipse 40% 40% at 85% 75%, rgba(120,80,30,0.12) 0%, transparent 55%),
+          radial-gradient(ellipse 100% 80% at 50% 50%, rgba(15,10,5,1) 40%, #050505 100%)
+        `
+      }} />
 
       <div className="relative z-10 text-center px-4 max-w-5xl">
         <div className="anim-fade-up">
