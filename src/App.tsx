@@ -118,10 +118,10 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
       {/* Background: layered radial gradients — warm golden light on dark */}
       <div className="absolute inset-0 z-0" style={{
         background: `
-          radial-gradient(ellipse 80% 60% at 70% 20%, rgba(166,137,83,0.18) 0%, transparent 70%),
-          radial-gradient(ellipse 60% 50% at 20% 80%, rgba(166,137,83,0.10) 0%, transparent 60%),
-          radial-gradient(ellipse 40% 40% at 85% 75%, rgba(120,80,30,0.12) 0%, transparent 55%),
-          radial-gradient(ellipse 100% 80% at 50% 50%, rgba(15,10,5,1) 40%, #050505 100%)
+          radial-gradient(ellipse 70% 50% at 75% 15%, rgba(166,137,83,0.45) 0%, transparent 65%),
+          radial-gradient(ellipse 50% 40% at 15% 85%, rgba(166,137,83,0.25) 0%, transparent 55%),
+          radial-gradient(ellipse 35% 35% at 88% 80%, rgba(180,120,40,0.30) 0%, transparent 50%),
+          #080603
         `
       }} />
 
