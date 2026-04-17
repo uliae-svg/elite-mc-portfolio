@@ -73,7 +73,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
             </a>
           ))}
           <button
-            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scrollTo('#contact')}
             className="anim-fade-down px-6 py-2 border border-gold-500/50 text-gold-400 text-xs uppercase tracking-widest hover:bg-gold-500 hover:text-black transition-colors duration-300"
             style={{ animationDelay: '0.5s' }}
           >
@@ -90,7 +90,7 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
         </button>
       </div>
 
-      {/* Mobile Menu — CSS max-height transition, no JS animation */}
+      {/* Mobile Menu */}
       <div
         className="md:hidden bg-black border-b border-white/10 relative z-10"
         style={{ display: isMobileMenuOpen ? 'block' : 'none' }}
@@ -112,7 +112,10 @@ const Navbar = ({ onAction }: { onAction: (msg: string) => void }) => {
   );
 };
 
-const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
+const scrollTo = (selector: string) =>
+  document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+
+const Hero = () => {
   return (
     <section className="relative flex items-center justify-center" style={{ height: 'calc(100svh - 72px)' }}>
       {/* Background: layered radial gradients — warm golden light on dark */}
@@ -137,7 +140,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => scrollTo('#contact')}
               className="px-10 py-4 border border-white/20 hover:border-gold-500/50 text-white uppercase tracking-widest transition-colors duration-300"
             >
               Обсудить дату
@@ -149,7 +152,7 @@ const Hero = ({ onAction }: { onAction: (msg: string) => void }) => {
       {/* Scroll Indicator */}
       <div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2 cursor-pointer scroll-indicator hidden md:flex"
-        onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+        onClick={() => scrollTo('#about')}
       >
         <div className="w-[1px] h-12 bg-gradient-to-b from-gold-500 to-transparent" />
       </div>
@@ -182,7 +185,7 @@ const About = () => {
               className="w-full h-full object-cover"
               loading="lazy"
           decoding="async"
-            />
+          />
           </div>
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-gold-950/80 border border-gold-500/20 p-6 hidden lg:block">
             <p className="font-serif italic text-gold-400 text-lg">"Каждое событие — это история, которую мы пишем вместе."</p>
@@ -398,7 +401,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative overflow-hidden">
+    <section id="contact" className="py-24 px-6">
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 relative z-10">
         <div>
@@ -447,7 +450,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
                   required
                   type="text" 
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   className="w-full bg-transparent border-b border-white/20 py-2 focus:border-gold-500 outline-none transition-colors" 
                 />
               </div>
@@ -457,7 +460,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
                   required
                   type="tel" 
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                   className="w-full bg-transparent border-b border-white/20 py-2 focus:border-gold-500 outline-none transition-colors" 
                 />
               </div>
@@ -468,7 +471,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
                 required
                 type="date" 
                 value={formData.date}
-                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
                 className="w-full bg-transparent border-b border-white/20 py-2 focus:border-gold-500 outline-none transition-colors" 
               />
             </div>
@@ -477,7 +480,7 @@ const Contact = ({ onAction }: { onAction: (msg: string) => void }) => {
               <textarea 
                 rows={4} 
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                 className="w-full bg-transparent border-b border-white/20 py-2 focus:border-gold-500 outline-none transition-colors resize-none" 
               />
             </div>
@@ -520,7 +523,7 @@ export default function App() {
   return (
     <div className="min-h-svh font-sans">
       <Navbar onAction={showToast} />
-      <Hero onAction={showToast} />
+      <Hero />
       <About />
       <Services />
       <Portfolio onAction={showToast} />
